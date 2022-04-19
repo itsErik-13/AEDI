@@ -49,11 +49,33 @@ public class PruebaColas {
                 aux = aux1.remove();
                 toRet.add(aux);
             } else {
-
                 aux = aux1.remove();
                 aux2.remove();
                 toRet.add(aux);
 
+            }
+        }
+        return toRet;
+    }
+
+    public static Queue<Integer> mezcla2(Queue<Integer> q1, Queue<Integer> q2) {
+        Queue<Integer> toRet = new ArrayDeque<>();
+        int aux = Integer.MIN_VALUE;
+        while (aux < q1.peek() || aux < q2.peek()) {
+            if (aux > q1.peek() || (aux < q2.peek() && aux < q1.peek() && q2.peek() < q1.peek())) {
+                aux = q2.remove();
+                toRet.add(aux);
+                q2.add(aux);
+            } else if (aux > q2.peek() || (aux < q2.peek() && aux < q1.peek() && q1.peek() < q2.peek())) {
+                aux = q1.remove();
+                toRet.add(aux);
+                q1.add(aux);
+            } else {
+                aux = q2.remove();
+                q1.remove();
+                toRet.add(aux);
+                q2.add(aux);
+                q1.add(aux);
             }
         }
         return toRet;
