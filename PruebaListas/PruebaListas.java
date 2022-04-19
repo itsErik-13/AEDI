@@ -12,9 +12,10 @@ public class PruebaListas {
             l.insertarFinal(i);
             l2.insertarFinal(i+2);
         }
-        l.insertarFinal(5);
-        Lista<Terna<Integer>> result = generarListaResumenAEDI(l,l2);
-        for (Terna<Integer> integer : result) {
+        l.insertarFinal(4);
+        l.insertarFinal(3);
+        Lista<Integer> result = valoresRepetidosAEDI(l);
+        for (Integer integer : result) {
             System.out.print(integer + " ");
         }
     }
@@ -133,6 +134,7 @@ public class PruebaListas {
         Lista<E> toRet = new ListaEnlazada<>();
         for (E e : lista) {
             if(!toRet.contiene(e)){
+                /*
                 IteradorLista<E> it = lista.iteradorLista();
                 int cont = 0;
                 while(it.hasNext()){
@@ -141,6 +143,9 @@ public class PruebaListas {
                     }
                 }
                 if(cont > 1){
+                    toRet.insertarFinal(e);
+                }*/
+                if(numVecesAEDI(lista, e) > 1){
                     toRet.insertarFinal(e);
                 }
             }
