@@ -104,16 +104,8 @@ public class PruebaColas {
         Cola<Integer> aux1 = new EnlazadaCola<>();
         Cola<Integer> aux2 = new EnlazadaCola<>();
         int aux;
-        for (int i = 0; i < q1.tamaño(); i++) {
-            Integer toCopy = q1.suprimir();
-            aux1.insertar(toCopy);
-            q1.insertar(toCopy);
-        }
-        for (int i = 0; i < q2.tamaño(); i++) {
-            Integer toCopy = q2.suprimir();
-            aux2.insertar(toCopy);
-            q2.insertar(toCopy);
-        }
+        aux1 = copiarAEDI(q1);
+        aux2 = copiarAEDI(q2);
         while (!(aux1.esVacio() && aux2.esVacio())) {
             if (aux1.esVacio() || !aux2.esVacio() && aux1.primero() > aux2.primero()) {
                 aux = aux2.suprimir();
