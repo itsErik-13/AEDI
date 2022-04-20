@@ -9,8 +9,7 @@ public class PruebaColas {
         Cola<Integer> q1 = new EnlazadaCola<>();
         Cola<Integer> q2 = new EnlazadaCola<>();
         for (int i = 0; i < 10; i++) {
-            q1.insertar(1);
-            q2.insertar(1);
+            q1.insertar(i);
         }
         //System.out.println(igualesAEDI(q1));
         Cola<Integer> result = mezcla2AEDI(q1, q2);
@@ -155,23 +154,33 @@ public class PruebaColas {
     }
 
     public static Cola<Integer> mezcla2AEDI(Cola<Integer> q1, Cola<Integer> q2) {
-        Cola<Integer> toRet = new EnlazadaCola<>();
+        Cola<Integer> toRet;
         int aux = Integer.MIN_VALUE;
-        while (aux < q1.primero() || aux < q2.primero()) {
-            if (aux > q1.primero() || (aux < q2.primero() && q2.primero() < q1.primero())) {
-                aux = q2.suprimir();
-                toRet.insertar(aux);
-                q2.insertar(aux);
-            } else if (aux > q2.primero() || (aux < q1.primero() && q1.primero() < q2.primero())) {
-                aux = q1.suprimir();
-                toRet.insertar(aux);
-                q1.insertar(aux);
-            } else {
-                aux = q2.suprimir();
-                q1.suprimir();
-                toRet.insertar(aux);
-                q2.insertar(aux);
-                q1.insertar(aux);
+        if(q1.esVacio() && q2.esVacio()){
+            toRet = new EnlazadaCola<>();
+            return toRet;
+        }else if(q1.esVacio()){
+            toRet = copiarAEDI(q2);
+        }else if(q2.esVacio()){
+            toRet = copiarAEDI(q1);
+        }else{
+            toRet = new EnlazadaCola<>();
+            while (aux < q1.primero() || aux < q2.primero()) {
+                if (aux > q1.primero() || (aux < q2.primero() && q2.primero() < q1.primero())) {
+                    aux = q2.suprimir();
+                    toRet.insertar(aux);
+                    q2.insertar(aux);
+                } else if (aux > q2.primero() || (aux < q1.primero() && q1.primero() < q2.primero())) {
+                    aux = q1.suprimir();
+                    toRet.insertar(aux);
+                    q1.insertar(aux);
+                } else {
+                    aux = q2.suprimir();
+                    q1.suprimir();
+                    toRet.insertar(aux);
+                    q2.insertar(aux);
+                    q1.insertar(aux);
+                }
             }
         }
         return toRet;
