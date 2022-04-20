@@ -135,11 +135,11 @@ public class PruebaColas {
         Queue<Integer> toRet = new ArrayDeque<>();
         int aux = Integer.MIN_VALUE;
         while (aux < q1.peek() || aux < q2.peek()) {
-            if (aux > q1.peek() || q2.peek() < q1.peek()) {
+            if (aux > q1.peek() ||(aux < q2.peek() && q2.peek() < q1.peek())) {
                 aux = q2.remove();
                 toRet.add(aux);
                 q2.add(aux);
-            } else if (aux > q2.peek() || q1.peek() < q2.peek()) {
+            } else if (aux > q2.peek() || (aux < q1.peek() && q1.peek() < q2.peek())) {
                 aux = q1.remove();
                 toRet.add(aux);
                 q1.add(aux);
