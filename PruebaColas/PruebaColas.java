@@ -12,7 +12,7 @@ public class PruebaColas {
             q1.insertar(i);
         }
         //System.out.println(igualesAEDI(q1));
-        Cola<Integer> result = mezcla2AEDI(q1, q2);
+        Cola<Integer> result = mezcla2AEDI(q2, q1);
         while(!result.esVacio()){
             System.out.print(result.suprimir() + " ");
         }
@@ -158,7 +158,6 @@ public class PruebaColas {
         int aux = Integer.MIN_VALUE;
         if(q1.esVacio() && q2.esVacio()){
             toRet = new EnlazadaCola<>();
-            return toRet;
         }else if(q1.esVacio()){
             toRet = copiarAEDI(q2);
         }else if(q2.esVacio()){
