@@ -9,11 +9,11 @@ public class PruebaColas {
         Cola<Integer> q1 = new EnlazadaCola<>();
         Cola<Integer> q2 = new EnlazadaCola<>();
         for (int i = 0; i < 10; i++) {
-            q1.insertar(i);
-            q2.insertar(i+10);
+            q1.insertar(1);
+            q2.insertar(1);
         }
         //System.out.println(igualesAEDI(q1));
-        Cola<Integer> result = mezclaAEDI(q1, q2);
+        Cola<Integer> result = mezcla2AEDI(q1, q2);
         while(!result.esVacio()){
             System.out.print(result.suprimir() + " ");
         }
@@ -135,11 +135,11 @@ public class PruebaColas {
         Queue<Integer> toRet = new ArrayDeque<>();
         int aux = Integer.MIN_VALUE;
         while (aux < q1.peek() || aux < q2.peek()) {
-            if (aux > q1.peek() || (aux < q2.peek() && aux < q1.peek() && q2.peek() < q1.peek())) {
+            if (aux > q1.peek() || q2.peek() < q1.peek()) {
                 aux = q2.remove();
                 toRet.add(aux);
                 q2.add(aux);
-            } else if (aux > q2.peek() || (aux < q2.peek() && aux < q1.peek() && q1.peek() < q2.peek())) {
+            } else if (aux > q2.peek() || q1.peek() < q2.peek()) {
                 aux = q1.remove();
                 toRet.add(aux);
                 q1.add(aux);
@@ -158,11 +158,11 @@ public class PruebaColas {
         Cola<Integer> toRet = new EnlazadaCola<>();
         int aux = Integer.MIN_VALUE;
         while (aux < q1.primero() || aux < q2.primero()) {
-            if (aux > q1.primero() || (aux < q2.primero() && aux < q1.primero() && q2.primero() < q1.primero())) {
+            if (aux > q1.primero() || (aux < q2.primero() && q2.primero() < q1.primero())) {
                 aux = q2.suprimir();
                 toRet.insertar(aux);
                 q2.insertar(aux);
-            } else if (aux > q2.primero() || (aux < q2.primero() && aux < q1.primero() && q1.primero() < q2.primero())) {
+            } else if (aux > q2.primero() || (aux < q1.primero() && q1.primero() < q2.primero())) {
                 aux = q1.suprimir();
                 toRet.insertar(aux);
                 q1.insertar(aux);
