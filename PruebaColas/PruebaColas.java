@@ -154,7 +154,7 @@ public class PruebaColas {
         return toRet;
     }
 
-    public static Cola<Integer> mezcla2(Cola<Integer> q1, Cola<Integer> q2) {
+    public static Cola<Integer> mezcla2AEDI(Cola<Integer> q1, Cola<Integer> q2) {
         Cola<Integer> toRet = new EnlazadaCola<>();
         int aux = Integer.MIN_VALUE;
         while (aux < q1.primero() || aux < q2.primero()) {
