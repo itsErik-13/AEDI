@@ -6,17 +6,6 @@ import java.util.Queue;
 
 public class PruebaColas {
     public static void main(String[] args) {
-        Cola<Integer> q1 = new EnlazadaCola<>();
-        Cola<Integer> q2 = new EnlazadaCola<>();
-        for (int i = 0; i < 10; i++) {
-            q1.insertar(i);
-        }
-        //System.out.println(igualesAEDI(q1));
-        Cola<Integer> result = mezcla2AEDI(q2, q1);
-        while(!result.esVacio()){
-            System.out.print(result.suprimir() + " ");
-        }
-
     }
 
     public static <E> void concatenar(Queue<E> q1, Queue<E> q2) {
@@ -117,29 +106,6 @@ public class PruebaColas {
                 aux = aux1.suprimir();
                 aux2.suprimir();
                 toRet.insertar(aux);
-            }
-        }
-        return toRet;
-    }
-
-    public static Queue<Integer> mezcla2(Queue<Integer> q1, Queue<Integer> q2) {
-        Queue<Integer> toRet = new ArrayDeque<>();
-        int aux = Integer.MIN_VALUE;
-        while (aux < q1.peek() || aux < q2.peek()) {
-            if (aux > q1.peek() ||(aux < q2.peek() && q2.peek() < q1.peek())) {
-                aux = q2.remove();
-                toRet.add(aux);
-                q2.add(aux);
-            } else if (aux > q2.peek() || (aux < q1.peek() && q1.peek() < q2.peek())) {
-                aux = q1.remove();
-                toRet.add(aux);
-                q1.add(aux);
-            } else {
-                aux = q2.remove();
-                q1.remove();
-                toRet.add(aux);
-                q2.add(aux);
-                q1.add(aux);
             }
         }
         return toRet;

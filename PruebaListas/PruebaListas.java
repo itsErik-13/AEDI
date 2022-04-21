@@ -6,18 +6,7 @@ import java.util.List;
 
 public class PruebaListas {
     public static void main(String[] args) {
-        Lista<Integer> l = new ListaEnlazada<>();
-        Lista<Integer> l2 = new ListaEnlazada<>();
-        for (int i = 0; i < 5; i++) {
-            l.insertarFinal(i);
-            l2.insertarFinal(i+2);
-        }
-        l.insertarFinal(4);
-        l.insertarFinal(3);
-        Lista<Integer> result = valoresRepetidosAEDI(l);
-        for (Integer integer : result) {
-            System.out.print(integer + " ");
-        }
+        
     }
 
     public static List<Integer> mayores(List<Integer> lista, int num) {

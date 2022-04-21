@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class PruebaPilas {
     public static void main(String[] args) {
-        System.out.println(esCorrectoAEDI("[()]"));
+        
     }
     public static String codificar (String mensaje){
         String toRet = "";
